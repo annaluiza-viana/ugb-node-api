@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VELVET - Filmes e Heróis</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="text-white min-h-screen">
+  <header class="sticky top-0 z-20 border-b border-white/10 bg-ink/90 backdrop-blur-xl">
+    <div class="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between gap-3">
+
+      <h1 class="text-4xl font-extrabold tracking-tight">
+        VEL<span class="text-pink-500">VET</span>
+      </h1>
+
+      <nav class="hidden sm:flex gap-2">
+
+        <button data-page="inicio" class="nav-btn nav-active rounded-xl px-4 py-2 text-sm">Início</button>
+
+        <button data-page="filmes" class="nav-btn rounded-xl px-4 py-2 text-sm text-zinc-300">Filmes</button>
+        
+        <button data-page="herois" class="nav-btn rounded-xl px-4 py-2 text-sm text-zinc-300">Heróis </button>
+      </nav>
+    </div>
+  </header>
+  <section id="heroBanner" class="relative h-[250px] md:h-[350px] rounded-3xl overflow-hidden border border-pink-neon/20 pink-glow">
+      <img src="images/wandavision.jpg" alt="WandaVision" class="absolute inset-0 w-full h-full object-cover object-center">
+  </section>
+  <main class="max-w-7xl mx-auto px-4 py-10">
+    <div class="flex flex-wrap items-end justify-between gap-4">
+      <div>
+        <p class="text-pink-soft text-xs font-bold tracking-[.2em]">
+          EXPLORE O CATÁLOGO
+        </p>
+
+        <h2 id="sectionTitle" class="text-2xl font-bold mt-2">
+          Filmes em destaque
+        </h2>
+      </div>
+      <div class="flex flex-wrap gap-2">
+        <input id="search" class="field !w-56" type="text" placeholder="Pesquisar no catálogo...">
+        <button id="addMovie" class="btn btn-pink">+ Cadastrar Filme</button>
+        <button id="addHero" class="btn btn-muted">+ Cadastrar Herói</button>
+
+      </div>
+    </div>
+    <div id="catalog" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 mt-6"></div>
+
+  </main>
+
+  <div id="modal" class="hidden fixed inset-0 z-50 items-center justify-center bg-black/80 p-4">
+    <div class="w-full max-w-lg rounded-2xl border border-pink-neon/30 bg-panel p-6 shadow-2xl">
+      <div class="flex items-center justify-between mb-6">
+        <h2 id="modalTitle" class="text-2xl font-bold">
+          Cadastrar filme
+        </h2>
+        <button id="closeModal" type="button" class="text-zinc-400 hover:text-pink-400 text-2xl"> &times;</button>
+
+      </div>
+
+      <form id="itemForm" class="space-y-4">
+        <input type="hidden" id="itemId">
+        <input type="hidden" id="itemType">
+
+        <div>
+          <label id="labelName"for="name" class="block text-sm text-zinc-300 mb-2"> Título do filme </label>
+            <input id="name"  type="text" class="field" placeholder="Digite o nome..." required>
+        </div>
+        <div id="extraFields" class="space-y-4"></div>
+          <p id="formError" class="text-rose-400 text-sm"></p> 
+        <div class="flex gap-3 pt-3">
+          <button id="cancelModal" type="button" class="btn btn-muted flex-1"> Cancelar </button>
+          <button type="submit" class="btn btn-pink flex-1">Salvar cadastro </button>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div id="toast" class="hidden fixed bottom-5 right-5 z-[60] rounded-xl bg-pink-500 px-5 py-3 text-white shadow-lg"></div>
+
+  <script src="script.js"></script>
+
+</body>
+</html>
